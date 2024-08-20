@@ -1,0 +1,413 @@
+@import url(https://fonts.googleapis.com/css?family=Alata:regular);
+
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+
+:root {
+  --White: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 0%);
+  --Dark-Gray: hsl(0, 0%, 55%);
+  --Very-Dark-Gray: hsl(0, 0%, 41%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Alata";
+}
+
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  font-family: "Josefin Sans";
+  font-weight: 300;
+}
+
+.overflow {
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 120px;
+  height: 70vh;
+  width: 100%;
+  background: url(images/desktop/image-hero.jpg) rgba(0, 0, 0, 0.3);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 60px 150px;
+  color: var(--White);
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav img {
+  z-index: 9;
+}
+
+.open,
+.close {
+  display: none;
+}
+
+ul {
+  display: flex;
+  gap: 25px;
+  font-size: 16px;
+  list-style: none;
+  opacity: 0.9;
+}
+
+ul li {
+  width: max-content;
+  position: relative;
+  cursor: pointer;
+  line-height: 2;
+}
+
+ul li::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  background: var(--White);
+  transition: transform 0.3s ease;
+}
+
+ul li:hover::after {
+  transform: scale(1);
+}
+
+header h1 {
+  font-size: 68px;
+  max-width: 650px;
+  border: 1px solid var(--White);
+  padding: 30px;
+}
+
+main {
+  width: 100%;
+  height: max-content;
+}
+
+main .about {
+  display: flex;
+  align-items: center;
+  height: 80vh;
+  padding: 100px 150px;
+  position: relative;
+}
+
+main .about img {
+  object-fit: contain;
+}
+
+main .about article {
+  margin-left: -150px;
+  background-color: var(--White);
+  position: relative;
+  bottom: -20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 100px 0 20px 100px;
+}
+
+main h2 {
+  font-size: 42px;
+}
+
+main .about article p {
+  color: var(--Very-Dark-Gray);
+  line-height: 1.5;
+}
+
+.creations {
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 50px 150px;
+}
+
+.creations button {
+  order: 2;
+  cursor: pointer;
+  font-family: "Alata";
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 40px;
+  width: 150px;
+  border: 2px solid var(--Dark-Gray);
+}
+
+.creations-grid {
+  order: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  width: auto;
+}
+
+.creations-grid .card {
+  width: fit-content;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.creations-grid .card img {
+  height: 100%;
+}
+
+.creations-grid .card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.creations-grid .card h3 {
+  display: flex;
+  width: 100%;
+  color: var(--White);
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  padding: 30px;
+  font-size: 32px;
+  z-index: 2;
+}
+
+footer {
+  background-color: var(--Black);
+  color: var(--White);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 150px;
+}
+
+footer article {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+}
+
+footer article:last-of-type {
+  align-items: end;
+}
+
+footer ul {
+  display: flex;
+}
+
+/* ----------------------- MEDIA QUERIES ----------------------------- */
+
+@media (max-width: 2400px) {
+  .creations-grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1500px) {
+  .creations-grid {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1200px) {
+  main .about {
+    padding: 50px;
+  }
+
+  main .about img {
+    width: 600px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 1000px) {
+  header {
+    padding: 40px 60px;
+    gap: 150px;
+  }
+
+  main .about {
+    height: fit-content;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px;
+    gap: 40px;
+  }
+
+  main .about article {
+    margin-left: 0;
+    padding: 0;
+    position: static;
+  }
+
+  .creations {
+    align-items: center;
+    padding: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    background: url(images/mobile/image-hero.jpg) rgba(0, 0, 0, 0.3);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px 30px;
+    height: 100vh;
+    gap: 250px;
+  }
+
+  .open {
+    display: block;
+  }
+
+  header nav {
+    font-family: "Josefin Sans";
+  }
+
+  header nav ul {
+    transform: translateY(-100%);
+    opacity: 0;
+    flex-direction: column;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    color: var(--White);
+    background-color: var(--Black);
+    height: 100vh;
+    width: 100%;
+    padding: 170px 30px;
+    text-transform: uppercase;
+    font-weight: 300;
+    gap: 10px;
+    font-size: 32px;
+    transition: 0.3s ease-out;
+  }
+
+  header h1 {
+    padding: 20px;
+    font-size: 66px;
+  }
+
+  main .about img {
+    width: 500px;
+  }
+
+  .creations {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .creations button {
+    order: 3;
+  }
+
+  .creations-grid {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .creations-grid .card {
+    width: max-content;
+    max-width: 80%;
+    min-width: 340px;
+  }
+
+  .creations-grid .card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .creations-grid .card::after {
+    height: 99%;
+  }
+
+  .creations-grid .card h3 {
+    padding: 20px;
+    font-size: 26px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap: 30px;
+  }
+
+  footer article {
+    align-items: center !important;
+  }
+
+  footer article:first-of-type ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 530px) {
+  header {
+    gap: 150px;
+  }
+
+  header h1 {
+    padding: 20px;
+    font-size: 40px;
+  }
+
+  main h2 {
+    font-size: 32px;
+  }
+
+  main .about {
+    padding: 30px;
+  }
+
+  main .about img {
+    width: 300px;
+  }
+}
